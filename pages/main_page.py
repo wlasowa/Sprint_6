@@ -1,5 +1,4 @@
 import allure
-from selenium.webdriver.support import expected_conditions as ec
 
 import urls
 from locators import main_page_locators as main_loc
