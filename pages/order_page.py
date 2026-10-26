@@ -8,26 +8,22 @@ from pages.base_page import BasePageSamokat
 class OrderPageSamokat(BasePageSamokat):
     @allure.step("Кликаем по логотипу Самоката")
     def click_samokat_logo(self):
-        self.driver.find_element(*order_loc.SAMOKAT_LOGO).click()
+        self.find_element(order_loc.SAMOKAT_LOGO).click()
 
     @allure.step("Заполняем данные клиента: {order_data}")
     def fill_customer_info(self, order_data):
-        self.driver.find_element(*order_loc.NAME_FIELD).send_keys(order_data["name"])
-        self.driver.find_element(*order_loc.SURNAME_FIELD).send_keys(
-            order_data["surname"]
-        )
-        self.driver.find_element(*order_loc.ADDRESS_FIELD).send_keys(
-            order_data["address"]
-        )
+        self.find_element(order_loc.NAME_FIELD).send_keys(order_data["name"])
+        self.find_element(order_loc.SURNAME_FIELD).send_keys(order_data["surname"])
+        self.find_element(order_loc.ADDRESS_FIELD).send_keys(order_data["address"])
 
         self.wait_clickable(order_loc.METRO_FIELD).send_keys(order_data["metro"])
         self.wait_clickable(
             self.format_locator(order_loc.METRO_LIST, order_data["metro"])
         ).click()
 
-        self.driver.find_element(*order_loc.PHONE_FIELD).send_keys(order_data["phone"])
+        self.find_element(order_loc.PHONE_FIELD).send_keys(order_data["phone"])
 
-        self.driver.find_element(*order_loc.NEXT_PAGE_BTN).click()
+        self.find_element(order_loc.NEXT_PAGE_BTN).click()
 
     @allure.step("Заполняем данные аренды")
     def fill_rent_info(self, order_data):
@@ -43,9 +39,7 @@ class OrderPageSamokat(BasePageSamokat):
             self.format_locator(order_loc.COLOR_CHECKBOX, order_data["color"])
         ).click()
 
-        self.driver.find_element(*order_loc.COMMENT_FIELD).send_keys(
-            order_data["comment"]
-        )
+        self.find_element(order_loc.COMMENT_FIELD).send_keys(order_data["comment"])
 
     @allure.step("Подтверждаем заказ")
     def confirm_order(self):

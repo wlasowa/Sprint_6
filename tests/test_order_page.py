@@ -41,7 +41,7 @@ class TestOrderPageSamokat:
         main_page.click_order_button("up")
         order_page.click_samokat_logo()
 
-        assert driver.current_url == urls.SAMOKAT_URL
+        assert order_page.get_current_url() == urls.SAMOKAT_URL
 
     @allure.title("Переход на Яндекс по логотипу Яндекса")
     @allure.description(
@@ -53,4 +53,4 @@ class TestOrderPageSamokat:
         main_page.click_yandex_logo()
         main_page.switch_to_new_window()
 
-        assert driver.current_url == urls.YA_URL
+        assert main_page.get_current_url() == urls.YA_URL
